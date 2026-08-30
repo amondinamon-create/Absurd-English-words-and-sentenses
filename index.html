@@ -1,0 +1,2717 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Абсурдный Английский — Vesions Design</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================================
+           ROOT VARIABLES — Dark Theme Only
+        ============================================================ */
+        :root {
+            --space-black: #171717;
+            --solar-gold: #ffe357;
+            --cosmic-white: #f5f0eb;
+            --star-silver: #d7c4b4;
+            --galaxy-violet: #404040;
+            --glass-bg: rgba(23, 23, 23, 0.75);
+            --glass-border: rgba(255, 227, 87, 0.10);
+            --glass-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+            --chip-bg: rgba(255, 255, 255, 0.05);
+            --chip-hover: rgba(255, 227, 87, 0.10);
+            --option-bg: rgba(255, 255, 255, 0.035);
+            --option-border: rgba(255, 255, 255, 0.05);
+            --option-hover: rgba(255, 227, 87, 0.06);
+            --option-correct: #2d7a4a;
+            --option-correct-border: #4fbc7a;
+            --option-wrong: #8a2a2a;
+            --option-wrong-border: #d44;
+            --action-bg: rgba(255, 255, 255, 0.04);
+            --action-hover: rgba(255, 227, 87, 0.08);
+            --action-primary: #ffe357;
+            --action-primary-hover: #ffd700;
+            --stats-bg: rgba(255, 255, 255, 0.03);
+            --exam-bar-bg: rgba(255, 227, 87, 0.05);
+            --exam-bar-border: rgba(255, 227, 87, 0.10);
+            --tooltip-bg: rgba(23, 23, 23, 0.92);
+            --tooltip-color: #f5f0eb;
+            --grammar-bg: rgba(255, 255, 255, 0.03);
+            --grammar-border: rgba(255, 255, 255, 0.05);
+            --text-primary: #f5f0eb;
+            --text-secondary: #d7c4b4;
+            --text-muted: rgba(255, 255, 255, 0.35);
+            --dictionary-bg: rgba(255, 227, 87, 0.05);
+            --dictionary-border: rgba(255, 227, 87, 0.10);
+            --level-beginner: #4ade80;
+            --level-intermediate: #fbbf24;
+            --level-advanced: #f87171;
+        }
+
+        /* ============================================================
+           RESET & BASE
+        ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', system-ui, sans-serif;
+            background: var(--space-black);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(to right, rgba(23, 23, 23, 0.85), rgba(23, 23, 23, 0.5)),
+                url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDQwMCA0MDAiPjxmaWx0ZXIgaWQ9Im4iPjxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIuNyIgbnVtT2N0YXZlcz0iNCIgc3RpdGNoVGlscz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSI0MDAiIGZpbHRlcj0idXJsKCNuKSIgb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==');
+            background-size: cover, 200px 200px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* ============================================================
+           MAIN CONTAINER — Three Columns
+        ============================================================ */
+        .app-container {
+            max-width: 1400px;
+            width: 100%;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            padding-top: 10px;
+        }
+
+        /* ============================================================
+           GLASS CONTAINER — Main Content (Center)
+        ============================================================ */
+        .glass {
+            flex: 1;
+            min-width: 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 24px 28px 28px;
+            box-shadow: var(--glass-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -120px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 227, 87, 0.04), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .glass::after {
+            content: '';
+            position: absolute;
+            bottom: -120px;
+            left: -120px;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(255, 227, 87, 0.03), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ============================================================
+           GRAMMAR SIDEBAR (Left) — Улучшенный
+        ============================================================ */
+        .grammar-sidebar {
+            width: 320px;
+            flex-shrink: 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 24px 20px;
+            box-shadow: var(--glass-shadow);
+            position: sticky;
+            top: 20px;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+            transition: opacity 0.3s;
+        }
+
+        .grammar-sidebar.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .grammar-sidebar h3 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--solar-gold);
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .grammar-sidebar .grammar-content {
+            font-size: 14px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .grammar-sidebar .grammar-content .grammar-section {
+            margin-bottom: 12px;
+            padding: 10px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            border-left: 3px solid var(--solar-gold);
+        }
+
+        .grammar-sidebar .grammar-content .grammar-section .section-title {
+            color: var(--solar-gold);
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .grammar-sidebar .grammar-content .grammar-section .section-text {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .grammar-sidebar .grammar-content .grammar-section .section-text .highlight {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .grammar-sidebar .grammar-content .grammar-section .section-text .gold {
+            color: var(--solar-gold);
+            font-weight: 500;
+        }
+
+        .grammar-sidebar .grammar-content .word-breakdown {
+            margin-top: 8px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 12px;
+            font-size: 13px;
+        }
+
+        .grammar-sidebar .grammar-content .word-breakdown .wb-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 3px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .grammar-sidebar .grammar-content .word-breakdown .wb-item .wb-en {
+            color: var(--text-primary);
+        }
+
+        .grammar-sidebar .grammar-content .word-breakdown .wb-item .wb-ru {
+            color: var(--text-muted);
+        }
+
+        .glass .grammar-box {
+            display: none;
+        }
+
+        /* ============================================================
+           DICTIONARY SIDEBAR (Right)
+        ============================================================ */
+        .dictionary-sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 24px 20px;
+            box-shadow: var(--glass-shadow);
+            position: sticky;
+            top: 20px;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+        }
+
+        .dictionary-sidebar h3 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--solar-gold);
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dictionary-sidebar h3 .badge {
+            font-size: 12px;
+            background: rgba(255, 227, 87, 0.15);
+            padding: 2px 10px;
+            border-radius: 20px;
+            color: var(--solar-gold);
+        }
+
+        .dict-add-form {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .dict-add-form input {
+            flex: 1;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 13px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .dict-add-form input:focus {
+            outline: none;
+            border-color: var(--solar-gold);
+        }
+
+        .dict-add-form button {
+            padding: 8px 14px;
+            background: var(--solar-gold);
+            border: none;
+            border-radius: 10px;
+            color: var(--space-black);
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 13px;
+            transition: 0.3s;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .dict-add-form button:hover {
+            background: var(--action-primary-hover);
+            transform: scale(1.02);
+        }
+
+        .dict-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dict-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 10px;
+            border-radius: 8px;
+            margin-bottom: 4px;
+            transition: 0.2s;
+            font-size: 14px;
+            border: 1px solid transparent;
+        }
+
+        .dict-list li:hover {
+            background: rgba(255, 227, 87, 0.04);
+            border-color: var(--dictionary-border);
+        }
+
+        .dict-list li .dict-word {
+            color: var(--text-primary);
+        }
+
+        .dict-list li .dict-trans {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .dict-list li .dict-remove {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 16px;
+            padding: 0 4px;
+            transition: 0.3s;
+        }
+
+        .dict-list li .dict-remove:hover {
+            color: #d44;
+            transform: scale(1.2);
+        }
+
+        .dict-empty {
+            color: var(--text-muted);
+            font-size: 14px;
+            text-align: center;
+            padding: 20px 0;
+            font-style: italic;
+        }
+
+        .dict-learn-btn {
+            width: 100%;
+            padding: 10px;
+            margin-top: 12px;
+            background: rgba(255, 227, 87, 0.08);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .dict-learn-btn:hover {
+            background: rgba(255, 227, 87, 0.15);
+            border-color: var(--solar-gold);
+        }
+
+        .dict-learn-btn.active {
+            background: var(--solar-gold);
+            color: var(--space-black);
+        }
+
+        /* ============================================================
+           HEADER
+        ============================================================ */
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .app-header h1 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-primary);
+        }
+
+        .app-header h1 .gold {
+            color: var(--solar-gold);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .icon-btn {
+            background: var(--chip-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .icon-btn:hover {
+            background: var(--chip-hover);
+            border-color: var(--solar-gold);
+            transform: scale(1.05);
+        }
+
+        /* ============================================================
+           LEVEL SELECTOR
+        ============================================================ */
+        .level-selector {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 2;
+            flex-wrap: wrap;
+        }
+
+        .level-btn {
+            padding: 6px 20px;
+            border-radius: 30px;
+            border: 2px solid var(--glass-border);
+            background: var(--action-bg);
+            color: var(--text-secondary);
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .level-btn:hover {
+            background: var(--action-hover);
+            border-color: rgba(255, 227, 87, 0.3);
+        }
+
+        .level-btn.active {
+            border-color: var(--solar-gold);
+            color: var(--solar-gold);
+        }
+
+        .level-btn .level-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+
+        .level-btn .level-dot.beginner { background: var(--level-beginner); }
+        .level-btn .level-dot.intermediate { background: var(--level-intermediate); }
+        .level-btn .level-dot.advanced { background: var(--level-advanced); }
+
+        .level-btn.active .level-dot.beginner { box-shadow: 0 0 12px var(--level-beginner); }
+        .level-btn.active .level-dot.intermediate { box-shadow: 0 0 12px var(--level-intermediate); }
+        .level-btn.active .level-dot.advanced { box-shadow: 0 0 12px var(--level-advanced); }
+
+        /* ============================================================
+           STATS BAR
+        ============================================================ */
+        .stats-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 20px;
+            background: var(--stats-bg);
+            border-radius: 40px;
+            padding: 6px 16px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(4px);
+            justify-content: center;
+            border: 1px solid var(--glass-border);
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .stat-icon {
+            font-size: 14px;
+        }
+
+        .stat-value {
+            font-weight: 700;
+            font-size: 14px;
+            min-width: 18px;
+            text-align: center;
+            color: var(--solar-gold);
+        }
+
+        .stat-label {
+            font-size: 11px;
+            opacity: 0.5;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        /* ============================================================
+           PHRASE DISPLAY
+        ============================================================ */
+        .phrase-area {
+            text-align: center;
+            margin: 8px 0 12px;
+            position: relative;
+            z-index: 2;
+            min-height: 70px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .phrase-en {
+            font-size: 26px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            line-height: 1.5;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 4px 10px;
+            margin-bottom: 4px;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-primary);
+        }
+
+        .phrase-level-badge {
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .phrase-level-badge.beginner {
+            background: rgba(74, 222, 128, 0.15);
+            color: var(--level-beginner);
+        }
+
+        .phrase-level-badge.intermediate {
+            background: rgba(251, 191, 36, 0.15);
+            color: var(--level-intermediate);
+        }
+
+        .phrase-level-badge.advanced {
+            background: rgba(248, 113, 113, 0.15);
+            color: var(--level-advanced);
+        }
+
+        .word-chip {
+            background: var(--chip-bg);
+            padding: 3px 14px;
+            border-radius: 30px;
+            font-size: 22px;
+            font-weight: 600;
+            transition: 0.25s;
+            cursor: default;
+            position: relative;
+            display: inline-block;
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .word-chip[data-tooltip]:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--tooltip-bg);
+            backdrop-filter: blur(8px);
+            padding: 6px 16px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 400;
+            white-space: nowrap;
+            color: var(--tooltip-color);
+            pointer-events: none;
+            z-index: 10;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--glass-border);
+        }
+
+        .phrase-hint {
+            font-size: 12px;
+            opacity: 0.35;
+            margin-top: 4px;
+            letter-spacing: 0.3px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 300;
+            color: var(--text-secondary);
+        }
+
+        /* ============================================================
+           OPTIONS
+        ============================================================ */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 6px;
+            margin: 8px 0 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .option-btn {
+            background: var(--option-bg);
+            border: 1px solid var(--option-border);
+            border-radius: 12px;
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: 0.25s;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Space Grotesk', sans-serif;
+            min-height: 40px;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            background: var(--option-hover);
+            border-color: rgba(255, 227, 87, 0.2);
+            transform: scale(1.01);
+        }
+
+        .option-btn:disabled {
+            cursor: default;
+            opacity: 0.6;
+        }
+
+        .option-btn .opt-letter {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: rgba(255, 227, 87, 0.08);
+            font-weight: 700;
+            font-size: 12px;
+            flex-shrink: 0;
+            color: var(--solar-gold);
+        }
+
+        .option-btn.correct {
+            background: rgba(79, 188, 122, 0.12);
+            border-color: var(--option-correct-border);
+            box-shadow: 0 0 20px rgba(79, 188, 122, 0.06);
+        }
+
+        .option-btn.correct .opt-letter {
+            background: rgba(79, 188, 122, 0.2);
+            color: #4fbc7a;
+        }
+
+        .option-btn.wrong {
+            background: rgba(200, 50, 50, 0.10);
+            border-color: var(--option-wrong-border);
+            box-shadow: 0 0 20px rgba(200, 50, 50, 0.04);
+        }
+
+        .option-btn.wrong .opt-letter {
+            background: rgba(200, 50, 50, 0.15);
+            color: #d44;
+        }
+
+        /* ============================================================
+           FEEDBACK
+        ============================================================ */
+        .feedback {
+            text-align: center;
+            font-size: 17px;
+            font-weight: 600;
+            min-height: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 2px 0 12px;
+            position: relative;
+            z-index: 2;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-primary);
+        }
+
+        .feedback .meme-text {
+            font-size: 14px;
+            font-weight: 400;
+            opacity: 0.8;
+            color: var(--text-secondary);
+        }
+
+        .feedback .meme-img {
+            max-width: 100%;
+            max-height: 100px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            margin-top: 4px;
+        }
+
+        /* ============================================================
+           ACTION BUTTONS
+        ============================================================ */
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 8px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .action-btn {
+            background: var(--action-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
+            padding: 8px 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: 0.25s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Rajdhani', sans-serif;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .action-btn:hover {
+            background: var(--action-hover);
+            border-color: rgba(255, 227, 87, 0.2);
+            transform: scale(1.02);
+        }
+
+        .action-btn.primary {
+            background: var(--action-primary);
+            color: var(--space-black);
+            border-color: transparent;
+        }
+
+        .action-btn.primary:hover {
+            background: var(--action-primary-hover);
+            box-shadow: 0 6px 16px rgba(255, 227, 87, 0.2);
+        }
+
+        .action-btn.danger:hover {
+            background: rgba(200, 60, 60, 0.12);
+            border-color: rgba(200, 60, 60, 0.2);
+        }
+
+        /* ============================================================
+           EXAM MODE
+        ============================================================ */
+        .exam-bar {
+            background: var(--exam-bar-bg);
+            border: 1px solid var(--exam-bar-border);
+            border-radius: 40px;
+            padding: 8px 18px;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            position: relative;
+            z-index: 2;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-primary);
+        }
+
+        .exam-bar .exam-progress {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--text-primary);
+        }
+
+        .exam-bar .exam-progress span {
+            color: var(--solar-gold);
+            font-weight: 700;
+        }
+
+        .exam-bar .exam-result {
+            font-weight: 700;
+            font-size: 17px;
+            color: var(--text-primary);
+        }
+
+        .exam-bar .exam-result .score {
+            color: #4fbc7a;
+        }
+
+        /* ============================================================
+           FLASHCARD MODE (overlay)
+        ============================================================ */
+        .flashcard-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .flashcard-overlay.active {
+            display: flex;
+        }
+
+        .flashcard-container {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px 50px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: var(--glass-shadow);
+            position: relative;
+        }
+
+        .flashcard-container h2 {
+            font-family: 'Rajdhani', sans-serif;
+            color: var(--solar-gold);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .flashcard-word {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 30px 0 10px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .flashcard-trans {
+            font-size: 24px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .flashcard-trans.show {
+            opacity: 1;
+        }
+
+        .flashcard-progress {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .flashcard-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .flashcard-actions button {
+            padding: 10px 24px;
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            background: var(--action-bg);
+            color: var(--text-primary);
+            cursor: pointer;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 13px;
+            transition: 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .flashcard-actions button:hover {
+            background: var(--action-hover);
+            border-color: var(--solar-gold);
+        }
+
+        .flashcard-actions button.primary {
+            background: var(--solar-gold);
+            color: var(--space-black);
+            border-color: transparent;
+        }
+
+        .flashcard-actions button.primary:hover {
+            background: var(--action-primary-hover);
+        }
+
+        .flashcard-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 28px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .flashcard-close:hover {
+            color: var(--text-primary);
+            transform: rotate(90deg);
+        }
+
+        /* ============================================================
+           RESPONSIVE
+        ============================================================ */
+        @media (max-width: 1200px) {
+            .dictionary-sidebar { width: 220px; }
+            .grammar-sidebar { width: 260px; }
+        }
+
+        @media (max-width: 1024px) {
+            .app-container {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .grammar-sidebar, .dictionary-sidebar {
+                width: 100%;
+                position: static;
+                max-height: none;
+            }
+            .grammar-sidebar { order: 2; }
+            .dictionary-sidebar { order: 3; }
+            .glass { order: 1; }
+            .flashcard-container { padding: 30px 24px; }
+            .flashcard-word { font-size: 28px; }
+            .grammar-sidebar .grammar-content .word-breakdown {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .glass { padding: 18px 14px 20px; border-radius: 18px; }
+            .app-header h1 { font-size: 18px; }
+            .phrase-en { font-size: 20px; }
+            .word-chip { font-size: 16px; padding: 2px 10px; }
+            .option-btn { font-size: 13px; padding: 8px 12px; min-height: 34px; }
+            .option-btn .opt-letter { width: 20px; height: 20px; font-size: 10px; }
+            .stats-bar { padding: 4px 10px; gap: 4px 10px; }
+            .stat-item { font-size: 10px; }
+            .stat-value { font-size: 11px; }
+            .action-btn { padding: 5px 12px; font-size: 11px; border-radius: 30px; }
+            .grammar-sidebar, .dictionary-sidebar { padding: 16px 14px; }
+            .flashcard-container { padding: 24px 16px; }
+            .flashcard-word { font-size: 24px; }
+            .flashcard-trans { font-size: 20px; }
+            .level-btn { padding: 4px 14px; font-size: 12px; }
+            .grammar-sidebar .grammar-content .word-breakdown {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ============================================================
+           UTILITIES
+        ============================================================ */
+        .hidden { display: none !important; }
+
+        ::-webkit-scrollbar { width: 3px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 227, 87, 0.2); }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- GRAMMAR SIDEBAR (Left) — Улучшенный -->
+        <aside class="grammar-sidebar hidden" id="grammarSidebar">
+            <h3>📖 Грамматика</h3>
+            <div class="grammar-content" id="grammarContent">
+                <p style="color: var(--text-muted); font-style: italic;">Выберите вариант ответа, чтобы увидеть подробный разбор</p>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT (Center) -->
+        <main class="glass" id="app">
+            <header class="app-header">
+                <h1>🤪 <span class="gold">Абсурдный</span> English</h1>
+                <div class="header-actions">
+                    <button class="icon-btn" id="themeToggle" title="Только тёмная тема" aria-label="Theme">🌙</button>
+                </div>
+            </header>
+
+            <!-- LEVEL SELECTOR -->
+            <div class="level-selector" id="levelSelector">
+                <button class="level-btn active" data-level="beginner">
+                    <span class="level-dot beginner"></span> Начинающий
+                </button>
+                <button class="level-btn" data-level="intermediate">
+                    <span class="level-dot intermediate"></span> Средний
+                </button>
+                <button class="level-btn" data-level="advanced">
+                    <span class="level-dot advanced"></span> Продвинутый
+                </button>
+            </div>
+
+            <div class="stats-bar" id="statsBar">
+                <div class="stat-item">
+                    <span class="stat-icon">✅</span>
+                    <span class="stat-value" id="correctCount">0</span>
+                    <span class="stat-label">верно</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-icon">❌</span>
+                    <span class="stat-value" id="wrongCount">0</span>
+                    <span class="stat-label">неверно</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-icon">🏆</span>
+                    <span class="stat-value" id="absurdCount">0</span>
+                    <span class="stat-label">абсурд</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-icon">📚</span>
+                    <span class="stat-value" id="dictCount">0</span>
+                    <span class="stat-label">в словаре</span>
+                </div>
+            </div>
+
+            <div class="exam-bar hidden" id="examBar">
+                <div class="exam-progress">📝 Вопрос <span id="examCurrent">1</span> / <span id="examTotal">10</span></div>
+                <div class="exam-result" id="examResult"></div>
+            </div>
+
+            <div class="phrase-area">
+                <div id="levelBadge"></div>
+                <div class="phrase-en" id="phraseDisplay"></div>
+                <div class="phrase-hint" id="phraseHint">наведи на слово — увидишь перевод</div>
+            </div>
+
+            <div class="options-grid" id="optionsContainer"></div>
+
+            <div class="feedback" id="feedback"></div>
+
+            <div class="actions">
+                <button class="action-btn primary" id="newBtn">🎲 Новое</button>
+                <button class="action-btn" id="speakBtn">🔊 Озвучить</button>
+                <button class="action-btn" id="examBtn">📝 Экзамен</button>
+                <button class="action-btn" id="addToDictBtn">📖 В словарь</button>
+                <button class="action-btn danger" id="resetBtn">🔄 Сброс</button>
+            </div>
+        </main>
+
+        <!-- DICTIONARY SIDEBAR (Right) -->
+        <aside class="dictionary-sidebar" id="dictionarySidebar">
+            <h3>
+                📚 Словарь
+                <span class="badge" id="dictBadge">0</span>
+            </h3>
+            
+            <div class="dict-add-form">
+                <input type="text" id="dictWordInput" placeholder="Слово" />
+                <input type="text" id="dictTransInput" placeholder="Перевод" />
+                <button id="dictAddBtn">+</button>
+            </div>
+            
+            <ul class="dict-list" id="dictList">
+                <li class="dict-empty">Словарь пуст. Добавьте слова или нажимайте «В словарь» на карточках</li>
+            </ul>
+            
+            <button class="dict-learn-btn" id="dictLearnBtn">🎯 Повторить слова</button>
+        </aside>
+    </div>
+
+    <!-- FLASHCARD OVERLAY -->
+    <div class="flashcard-overlay" id="flashcardOverlay">
+        <div class="flashcard-container">
+            <button class="flashcard-close" id="flashcardClose">&times;</button>
+            <h2>🎯 Повторение слов</h2>
+            <div class="flashcard-progress" id="flashcardProgress">1 / 10</div>
+            <div class="flashcard-word" id="flashcardWord">word</div>
+            <div class="flashcard-trans" id="flashcardTrans">перевод</div>
+            <div class="flashcard-actions">
+                <button id="flashcardShow">Показать перевод</button>
+                <button id="flashcardNext" class="primary">Далее →</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ================================================================
+        //  1. ПОЛНЫЙ СЛОВАРЬ ПЕРЕВОДОВ
+        // ================================================================
+
+        const WORD_TRANSLATIONS = {
+            'a': '', 'an': '', 'the': '',
+            'Dog': 'Собака', 'Cat': 'Кот', 'Pizza': 'Пицца', 'Coffee': 'Кофе',
+            'Money': 'Деньги', 'Friend': 'Друг', 'Teacher': 'Учитель', 'Boss': 'Начальник',
+            'Door': 'Дверь', 'Bed': 'Кровать', 'Rain': 'Дождь', 'Head': 'Голова',
+            'TV': 'Телевизор', 'Phone': 'Телефон', 'Book': 'Книга', 'Window': 'Окно',
+            'Tree': 'Дерево', 'Star': 'Звезда', 'Cloud': 'Облако', 'Mountain': 'Гора',
+            'River': 'Река', 'Garden': 'Сад', 'Kitchen': 'Кухня', 'Student': 'Студент',
+            'Table': 'Стол', 'Chair': 'Стул', 'Picture': 'Картина', 'Music': 'Музыка',
+            'Game': 'Игра', 'Movie': 'Фильм', 'Song': 'Песня', 'House': 'Дом',
+            'Car': 'Машина', 'City': 'Город', 'School': 'Школа', 'University': 'Университет',
+            'Hospital': 'Больница', 'Computer': 'Компьютер', 'Sky': 'Небо', 'Ocean': 'Океан',
+            'Forest': 'Лес', 'Flower': 'Цветок', 'Animal': 'Животное', 'Family': 'Семья',
+            'Time': 'Время', 'Love': 'Любовь', 'Life': 'Жизнь', 'Dream': 'Мечта',
+            'Man': 'Мужчина', 'Woman': 'Женщина', 'Child': 'Ребёнок', 'People': 'Люди',
+            'World': 'Мир', 'Earth': 'Земля', 'Sun': 'Солнце', 'Moon': 'Луна',
+            'Milk': 'Молоко', 'Water': 'Вода', 'Air': 'Воздух', 'Fire': 'Огонь',
+            'Sofa': 'Диван', 'Desk': 'Парта', 'Floor': 'Пол', 'Spoon': 'Ложка',
+            'Chainsaw': 'Бензопила', 'Radio': 'Радио', 'Bank': 'Банк', 'Breakfast': 'Завтрак',
+            'Food': 'Еда', 'Story': 'История',
+            'eats': 'ест', 'drinks': 'пьёт', 'loves': 'любит', 'hates': 'ненавидит',
+            'kicks': 'пинает', 'kisses': 'целует', 'reads': 'читает', 'draws': 'рисует',
+            'wears': 'носит', 'breaks': 'ломает', 'buys': 'покупает', 'sings': 'поёт',
+            'talks': 'говорит', 'runs': 'бегает', 'jumps': 'прыгает', 'flies': 'летает',
+            'swims': 'плавает', 'writes': 'пишет', 'paints': 'рисует красками', 'cooks': 'готовит',
+            'builds': 'строит', 'dances': 'танцует', 'laughs': 'смеётся', 'watches': 'смотрит',
+            'listens': 'слушает', 'plays': 'играет', 'opens': 'открывает', 'clos': 'закрывает',
+            'sits': 'сидит', 'stands': 'стоит', 'walks': 'гуляет', 'drives': 'водит',
+            'thinks': 'думает', 'dreams': 'мечтает', 'works': 'работает', 'studies': 'учится',
+            'travels': 'путешествует', 'creates': 'создаёт', 'changes': 'меняет',
+            'grows': 'растёт', 'saves': 'спасает', 'sleeps': 'спит', 'helps': 'помогает',
+            'Big': 'большой', 'Little': 'маленький', 'Crazy': 'безумный', 'Beautiful': 'красивый',
+            'Ugly': 'уродливый', 'Bright': 'яркий', 'Dark': 'тёмный', 'Old': 'старый',
+            'Young': 'молодой', 'Fast': 'быстрый', 'Slow': 'медленный', 'Warm': 'тёплый',
+            'Cold': 'холодный', 'Soft': 'мягкий', 'Hard': 'твёрдый', 'Wonderful': 'замечательный',
+            'Terrible': 'ужасный', 'Amazing': 'потрясающий', 'Awful': 'отвратительный',
+            'Great': 'великий', 'Small': 'маленький', 'Tall': 'высокий', 'Short': 'короткий',
+            'Wide': 'широкий', 'Narrow': 'узкий', 'Happy': 'счастливый', 'Sad': 'грустный',
+            'Angry': 'злой', 'Tired': 'уставший', 'Hungry': 'голодный', 'Thirsty': 'жаждущий',
+            'Clever': 'умный', 'Kind': 'добрый', 'Brave': 'храбрый', 'Shy': 'застенчивый',
+            'in': 'в', 'on': 'на', 'under': 'под', 'with': 'с', 'without': 'без',
+            'by': 'у', 'for': 'для', 'from': 'из', 'at': 'в', 'to': 'к', 'about': 'о',
+            'like': 'как', 'through': 'через', 'above': 'над', 'below': 'под',
+            'between': 'между', 'among': 'среди', 'around': 'вокруг',
+            'like a boss': 'как босс', 'all day': 'весь день', 'or not': 'или нет',
+            'for real': 'реально', 'no cap': 'без обмана', 'periodt': 'точка',
+            'as heck': 'офигенно', 'for no reason': 'без причины', 'with style': 'стильно',
+            'never again': 'никогда больше', 'suddenly...': 'Внезапно...', 'maybe': 'Может быть,',
+            'obviously': 'Очевидно,', 'literally': 'Буквально,', 'honestly': 'Честно говоря,',
+            'technically': 'Технически,', 'imagine...': 'Представь...', 'plot twist:': 'Поворот сюжета:',
+            'surprisingly': 'Как ни странно,', 'unfortunately': 'К сожалению,',
+            'of course': 'Конечно,', 'actually': 'На самом деле,',
+            'big': 'большой', 'little': 'маленький', 'crazy': 'безумный', 'beautiful': 'красивый',
+            'ugly': 'уродливый', 'bright': 'яркий', 'dark': 'тёмный', 'old': 'старый',
+            'young': 'молодой', 'fast': 'быстрый', 'slow': 'медленный', 'warm': 'тёплый',
+            'cold': 'холодный', 'soft': 'мягкий', 'hard': 'твёрдый', 'wonderful': 'замечательный',
+            'terrible': 'ужасный', 'amazing': 'потрясающий', 'awful': 'отвратительный',
+            'great': 'великий', 'small': 'маленький', 'tall': 'высокий', 'short': 'короткий',
+            'wide': 'широкий', 'narrow': 'узкий', 'happy': 'счастливый', 'sad': 'грустный',
+            'angry': 'злой', 'tired': 'уставший', 'hungry': 'голодный', 'thirsty': 'жаждущий',
+            'clever': 'умный', 'kind': 'добрый', 'brave': 'храбрый', 'shy': 'застенчивый',
+            'dog': 'собака', 'cat': 'кот', 'pizza': 'пицца', 'coffee': 'кофе',
+            'money': 'деньги', 'friend': 'друг', 'teacher': 'учитель', 'boss': 'начальник',
+            'door': 'дверь', 'bed': 'кровать', 'rain': 'дождь', 'head': 'голова',
+            'tv': 'телевизор', 'phone': 'телефон', 'book': 'книга', 'window': 'окно',
+            'tree': 'дерево', 'star': 'звезда', 'cloud': 'облако', 'mountain': 'гора',
+            'river': 'река', 'garden': 'сад', 'kitchen': 'кухня', 'student': 'студент',
+            'table': 'стол', 'chair': 'стул', 'picture': 'картина', 'music': 'музыка',
+            'game': 'игра', 'movie': 'фильм', 'song': 'песня', 'house': 'дом',
+            'car': 'машина', 'city': 'город', 'school': 'школа', 'university': 'университет',
+            'hospital': 'больница', 'computer': 'компьютер', 'sky': 'небо', 'ocean': 'океан',
+            'forest': 'лес', 'flower': 'цветок', 'animal': 'животное', 'family': 'семья',
+            'time': 'время', 'love': 'любовь', 'life': 'жизнь', 'dream': 'мечта',
+            'man': 'мужчина', 'woman': 'женщина', 'child': 'ребёнок', 'people': 'люди',
+            'world': 'мир', 'earth': 'земля', 'sun': 'солнце', 'moon': 'луна',
+            'milk': 'молоко', 'water': 'вода', 'air': 'воздух', 'fire': 'огонь',
+            'sofa': 'диван', 'desk': 'парта', 'floor': 'пол', 'spoon': 'ложка',
+            'chainsaw': 'бензопила', 'radio': 'радио', 'bank': 'банк', 'breakfast': 'завтрак',
+            'food': 'еда', 'story': 'история',
+        };
+
+
+        // ================================================================
+        //  2. ФРАЗЫ С ДЕТАЛЬНОЙ ГРАММАТИКОЙ
+        // ================================================================
+
+        function buildGrammar(en, ru, details) {
+            return {
+                en: en,
+                ru: ru,
+                details: details
+            };
+        }
+
+        const PHRASES_BY_LEVEL = {
+            beginner: [
+                buildGrammar(
+                    'a Dog eats a Pizza',
+                    'Собака ест пиццу',
+                    {
+                        structure: 'Артикль + Существительное + Глагол + Артикль + Существительное',
+                        breakdown: [
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Dog', ru: 'Собака' },
+                            { en: 'eats', ru: 'ест' },
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Pizza', ru: 'пиццу' }
+                        ],
+                        rules: [
+                            '📌 Артикль «a» ставится перед существительным, начинающимся с согласного звука (Dog, Pizza)',
+                            '📌 Глагол «eat» получает окончание «-s» для 3-го лица единственного числа (he/she/it)',
+                            '📌 В русском языке «Pizza» в винительном падеже: «пиццу» (кого? что?)'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'the Cat drinks Coffee',
+                    'Кот пьёт кофе',
+                    {
+                        structure: 'Артикль + Существительное + Глагол + Существительное',
+                        breakdown: [
+                            { en: 'the', ru: 'определённый артикль' },
+                            { en: 'Cat', ru: 'Кот' },
+                            { en: 'drinks', ru: 'пьёт' },
+                            { en: 'Coffee', ru: 'кофе' }
+                        ],
+                        rules: [
+                            '📌 Артикль «the» — определённый, указывает на конкретный предмет (этот кот)',
+                            '📌 Глагол «drink» → «drinks» для 3-го лица ед.ч.',
+                            '📌 «Coffee» — несклоняемое существительное в русском языке'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'a Teacher loves Students',
+                    'Учитель любит студентов',
+                    {
+                        structure: 'Артикль + Существительное + Глагол + Существительное',
+                        breakdown: [
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Teacher', ru: 'Учитель' },
+                            { en: 'loves', ru: 'любит' },
+                            { en: 'Students', ru: 'студентов' }
+                        ],
+                        rules: [
+                            '📌 Артикль «a» перед «Teacher» (согласный звук)',
+                            '📌 Глагол «love» → «loves» для 3-го лица ед.ч.',
+                            '📌 «Students» в винительном падеже: «студентов» (кого? что?)'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'the Boss hates Money',
+                    'Начальник ненавидит деньги',
+                    {
+                        structure: 'Артикль + Существительное + Глагол + Существительное',
+                        breakdown: [
+                            { en: 'the', ru: 'определённый артикль' },
+                            { en: 'Boss', ru: 'Начальник' },
+                            { en: 'hates', ru: 'ненавидит' },
+                            { en: 'Money', ru: 'деньги' }
+                        ],
+                        rules: [
+                            '📌 Артикль «the» перед «Boss» (определённый)',
+                            '📌 Глагол «hate» → «hates» для 3-го лица ед.ч.',
+                            '📌 «Money» — неисчисляемое, не склоняется во множественном числе'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'a Friend kicks the Door',
+                    'Друг пинает дверь',
+                    {
+                        structure: 'Артикль + Существительное + Глагол + Артикль + Существительное',
+                        breakdown: [
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Friend', ru: 'Друг' },
+                            { en: 'kicks', ru: 'пинает' },
+                            { en: 'the', ru: 'определённый артикль' },
+                            { en: 'Door', ru: 'дверь' }
+                        ],
+                        rules: [
+                            '📌 Артикль «a» перед «Friend» (согласный звук)',
+                            '📌 Глагол «kick» → «kicks» для 3-го лица ед.ч.',
+                            '📌 «Door» в винительном падеже: «дверь» (без изменений)'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'Money kisses a Friend',
+                    'Деньги целуют друга',
+                    {
+                        structure: 'Существительное + Глагол + Артикль + Существительное',
+                        breakdown: [
+                            { en: 'Money', ru: 'Деньги' },
+                            { en: 'kisses', ru: 'целуют' },
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Friend', ru: 'друга' }
+                        ],
+                        rules: [
+                            '📌 «Money» — неисчисляемое, в английском всегда в единственном числе',
+                            '📌 Глагол «kiss» → «kisses» для 3-го лица ед.ч.',
+                            '📌 «Friend» в винительном падеже: «друга» (одушевлённое)'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'the Door drinks Coffee',
+                    'Дверь пьёт кофе',
+                    {
+                        structure: 'Артикль + Существительное + Глагол + Существительное',
+                        breakdown: [
+                            { en: 'the', ru: 'определённый артикль' },
+                            { en: 'Door', ru: 'Дверь' },
+                            { en: 'drinks', ru: 'пьёт' },
+                            { en: 'Coffee', ru: 'кофе' }
+                        ],
+                        rules: [
+                            '📌 Артикль «the» перед «Door» (определённый)',
+                            '📌 Глагол «drink» → «drinks» для 3-го лица ед.ч.',
+                            '📌 «Coffee» — несклоняемое существительное'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'a Bed eats Pizza',
+                    'Кровать ест пиццу',
+                    {
+                        structure: 'Артикль + Существительное + Глагол + Существительное',
+                        breakdown: [
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Bed', ru: 'Кровать' },
+                            { en: 'eats', ru: 'ест' },
+                            { en: 'Pizza', ru: 'пиццу' }
+                        ],
+                        rules: [
+                            '📌 Артикль «a» перед «Bed» (согласный звук)',
+                            '📌 Глагол «eat» → «eats» для 3-го лица ед.ч.',
+                            '📌 «Pizza» в винительном падеже: «пиццу» (ж.р., окончание -у)'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'Rain loves Music',
+                    'Дождь любит музыку',
+                    {
+                        structure: 'Существительное + Глагол + Существительное',
+                        breakdown: [
+                            { en: 'Rain', ru: 'Дождь' },
+                            { en: 'loves', ru: 'любит' },
+                            { en: 'Music', ru: 'музыку' }
+                        ],
+                        rules: [
+                            '📌 «Rain» — неисчисляемое, без артикля',
+                            '📌 Глагол «love» → «loves» для 3-го лица ед.ч.',
+                            '📌 «Music» в винительном падеже: «музыку» (ж.р.)'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'the Head hates TV',
+                    'Голова ненавидит телевизор',
+                    {
+                        structure: 'Артикль + Существительное + Глагол + Существительное',
+                        breakdown: [
+                            { en: 'the', ru: 'определённый артикль' },
+                            { en: 'Head', ru: 'Голова' },
+                            { en: 'hates', ru: 'ненавидит' },
+                            { en: 'TV', ru: 'телевизор' }
+                        ],
+                        rules: [
+                            '📌 Артикль «the» перед «Head» (определённый)',
+                            '📌 Глагол «hate» → «hates» для 3-го лица ед.ч.',
+                            '📌 TV — аббревиатура, не склоняется'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'a Cat drinks Milk',
+                    'Кот пьёт молоко',
+                    {
+                        structure: 'Артикль + Существительное + Глагол + Существительное',
+                        breakdown: [
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Cat', ru: 'Кот' },
+                            { en: 'drinks', ru: 'пьёт' },
+                            { en: 'Milk', ru: 'молоко' }
+                        ],
+                        rules: [
+                            '📌 Артикль «a» перед «Cat» (согласный звук)',
+                            '📌 Глагол «drink» → «drinks» для 3-го лица ед.ч.',
+                            '📌 «Milk» — неисчисляемое, без артикля'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'the Student reads a Book',
+                    'Студент читает книгу',
+                    {
+                        structure: 'Артикль + Существительное + Глагол + Артикль + Существительное',
+                        breakdown: [
+                            { en: 'the', ru: 'определённый артикль' },
+                            { en: 'Student', ru: 'Студент' },
+                            { en: 'reads', ru: 'читает' },
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Book', ru: 'книгу' }
+                        ],
+                        rules: [
+                            '📌 Артикль «the» перед «Student» (определённый)',
+                            '📌 Глагол «read» → «reads» для 3-го лица ед.ч.',
+                            '📌 «Book» в винительном падеже: «книгу» (ж.р.)'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'a Child plays a Game',
+                    'Ребёнок играет в игру',
+                    {
+                        structure: 'Артикль + Существительное + Глагол + Артикль + Существительное',
+                        breakdown: [
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Child', ru: 'Ребёнок' },
+                            { en: 'plays', ru: 'играет' },
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Game', ru: 'игру' }
+                        ],
+                        rules: [
+                            '📌 Артикль «a» перед «Child» (согласный звук)',
+                            '📌 Глагол «play» → «plays» для 3-го лица ед.ч.',
+                            '📌 «Game» в винительном падеже: «игру» (ж.р.)'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'the Woman sings a Song',
+                    'Женщина поёт песню',
+                    {
+                        structure: 'Артикль + Существительное + Глагол + Артикль + Существительное',
+                        breakdown: [
+                            { en: 'the', ru: 'определённый артикль' },
+                            { en: 'Woman', ru: 'Женщина' },
+                            { en: 'sings', ru: 'поёт' },
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Song', ru: 'песню' }
+                        ],
+                        rules: [
+                            '📌 Артикль «the» перед «Woman» (определённый)',
+                            '📌 Глагол «sing» → «sings» для 3-го лица ед.ч.',
+                            '📌 «Song» в винительном падеже: «песню» (ж.р.)'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'a Man drives a Car',
+                    'Мужчина ведёт машину',
+                    {
+                        structure: 'Артикль + Существительное + Глагол + Артикль + Существительное',
+                        breakdown: [
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Man', ru: 'Мужчина' },
+                            { en: 'drives', ru: 'ведёт' },
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Car', ru: 'машину' }
+                        ],
+                        rules: [
+                            '📌 Артикль «a» перед «Man» (согласный звук)',
+                            '📌 Глагол «drive» → «drives» для 3-го лица ед.ч.',
+                            '📌 «Car» в винительном падеже: «машину» (ж.р.)'
+                        ]
+                    }
+                ),
+            ],
+
+            intermediate: [
+                buildGrammar(
+                    'a Dog eats a Big Pizza',
+                    'Собака ест большую пиццу',
+                    {
+                        structure: 'Артикль + Существительное + Глагол + Артикль + Прилагательное + Существительное',
+                        breakdown: [
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Dog', ru: 'Собака' },
+                            { en: 'eats', ru: 'ест' },
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Big', ru: 'большой' },
+                            { en: 'Pizza', ru: 'пиццу' }
+                        ],
+                        rules: [
+                            '📌 Прилагательное «Big» стоит перед существительным в английском языке',
+                            '📌 «Pizza» в винительном падеже: «пиццу» (ж.р., окончание -у)',
+                            '📌 Артикль «a» ставится перед согласным звуком (Dog, Big, Pizza)'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'the Cat drinks Beautiful Coffee',
+                    'Кот пьёт красивый кофе',
+                    {
+                        structure: 'Артикль + Существительное + Глагол + Прилагательное + Существительное',
+                        breakdown: [
+                            { en: 'the', ru: 'определённый артикль' },
+                            { en: 'Cat', ru: 'Кот' },
+                            { en: 'drinks', ru: 'пьёт' },
+                            { en: 'Beautiful', ru: 'красивый' },
+                            { en: 'Coffee', ru: 'кофе' }
+                        ],
+                        rules: [
+                            '📌 Прилагательное «Beautiful» перед существительным «Coffee»',
+                            '📌 Кофе — несклоняемое существительное в русском языке',
+                            '📌 Артикль «the» указывает на конкретного кота'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'a Teacher loves Crazy Students',
+                    'Учитель любит безумных студентов',
+                    {
+                        structure: 'Артикль + Существительное + Глагол + Прилагательное + Существительное',
+                        breakdown: [
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Teacher', ru: 'Учитель' },
+                            { en: 'loves', ru: 'любит' },
+                            { en: 'Crazy', ru: 'безумных' },
+                            { en: 'Students', ru: 'студентов' }
+                        ],
+                        rules: [
+                            '📌 «Students» в винительном падеже: «студентов» (кого? что?)',
+                            '📌 Прилагательное «Crazy» перед существительным',
+                            '📌 Артикль «a» перед «Teacher» (согласный звук)'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'the Boss hates Ugly Money',
+                    'Начальник ненавидит уродливые деньги',
+                    {
+                        structure: 'Артикль + Существительное + Глагол + Прилагательное + Существительное',
+                        breakdown: [
+                            { en: 'the', ru: 'определённый артикль' },
+                            { en: 'Boss', ru: 'Начальник' },
+                            { en: 'hates', ru: 'ненавидит' },
+                            { en: 'Ugly', ru: 'уродливые' },
+                            { en: 'Money', ru: 'деньги' }
+                        ],
+                        rules: [
+                            '📌 «Money» — неисчисляемое, не склоняется во множественном числе',
+                            '📌 Прилагательное «Ugly» перед существительным',
+                            '📌 Артикль «the» перед «Boss» (определённый)'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'a Happy Cat drinks Warm Milk',
+                    'Счастливый кот пьёт тёплое молоко',
+                    {
+                        structure: 'Артикль + Прилагательное + Существительное + Глагол + Прилагательное + Существительное',
+                        breakdown: [
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Happy', ru: 'Счастливый' },
+                            { en: 'Cat', ru: 'кот' },
+                            { en: 'drinks', ru: 'пьёт' },
+                            { en: 'Warm', ru: 'тёплое' },
+                            { en: 'Milk', ru: 'молоко' }
+                        ],
+                        rules: [
+                            '📌 Прилагательные «Happy» и «Warm» перед существительными',
+                            '📌 «Milk» — неисчисляемое, без артикля',
+                            '📌 Глагол «drink» → «drinks» для 3-го лица ед.ч.'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'a Dog eats a Big Pizza in the Kitchen',
+                    'Собака ест большую пиццу на кухне',
+                    {
+                        structure: 'Артикль + Существительное + Глагол + Артикль + Прилагательное + Существительное + Предлог + Артикль + Существительное',
+                        breakdown: [
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Dog', ru: 'Собака' },
+                            { en: 'eats', ru: 'ест' },
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Big', ru: 'большую' },
+                            { en: 'Pizza', ru: 'пиццу' },
+                            { en: 'in', ru: 'в' },
+                            { en: 'the', ru: 'определённый артикль' },
+                            { en: 'Kitchen', ru: 'кухне' }
+                        ],
+                        rules: [
+                            '📌 Предлог «in» + предложный падеж: «на кухне» (где?)',
+                            '📌 Прилагательное «Big» перед существительным',
+                            '📌 Артикль «the» перед «Kitchen» (определённый)'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'the Cat drinks Beautiful Coffee on the Table',
+                    'Кот пьёт красивый кофе на столе',
+                    {
+                        structure: 'Артикль + Существительное + Глагол + Прилагательное + Существительное + Предлог + Артикль + Существительное',
+                        breakdown: [
+                            { en: 'the', ru: 'определённый артикль' },
+                            { en: 'Cat', ru: 'Кот' },
+                            { en: 'drinks', ru: 'пьёт' },
+                            { en: 'Beautiful', ru: 'красивый' },
+                            { en: 'Coffee', ru: 'кофе' },
+                            { en: 'on', ru: 'на' },
+                            { en: 'the', ru: 'определённый артикль' },
+                            { en: 'Table', ru: 'столе' }
+                        ],
+                        rules: [
+                            '📌 Предлог «on» + предложный падеж: «на столе» (где?)',
+                            '📌 Прилагательное «Beautiful» перед существительным',
+                            '📌 Артикль «the» перед «Table» (определённый)'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'a Friend kicks the Door with a Chainsaw',
+                    'Друг пинает дверь бензопилой',
+                    {
+                        structure: 'Артикль + Существительное + Глагол + Артикль + Существительное + Предлог + Артикль + Существительное',
+                        breakdown: [
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Friend', ru: 'Друг' },
+                            { en: 'kicks', ru: 'пинает' },
+                            { en: 'the', ru: 'определённый артикль' },
+                            { en: 'Door', ru: 'дверь' },
+                            { en: 'with', ru: 'с' },
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Chainsaw', ru: 'бензопилой' }
+                        ],
+                        rules: [
+                            '📌 Предлог «with» + творительный падеж: «бензопилой» (чем?)',
+                            '📌 Артикль «a» перед «Chainsaw» (согласный звук)',
+                            '📌 Глагол «kick» → «kicks» для 3-го лица ед.ч.'
+                        ]
+                    }
+                ),
+            ],
+
+            advanced: [
+                buildGrammar(
+                    'suddenly... a Dog eats a Big Pizza',
+                    'Внезапно... собака ест большую пиццу',
+                    {
+                        structure: 'Наречие + Артикль + Существительное + Глагол + Артикль + Прилагательное + Существительное',
+                        breakdown: [
+                            { en: 'suddenly...', ru: 'Внезапно...' },
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Dog', ru: 'Собака' },
+                            { en: 'eats', ru: 'ест' },
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Big', ru: 'большую' },
+                            { en: 'Pizza', ru: 'пиццу' }
+                        ],
+                        rules: [
+                            '📌 Наречие «suddenly» в начале предложения (вводное слово)',
+                            '📌 Джокер в начале предложения создаёт эффект неожиданности',
+                            '📌 Артикль «a» перед согласным звуком (Dog, Big, Pizza)'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'a Dog eats a Big Pizza like a boss',
+                    'Собака ест большую пиццу как босс',
+                    {
+                        structure: 'Артикль + Существительное + Глагол + Артикль + Прилагательное + Существительное + Фраза',
+                        breakdown: [
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Dog', ru: 'Собака' },
+                            { en: 'eats', ru: 'ест' },
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Big', ru: 'большую' },
+                            { en: 'Pizza', ru: 'пиццу' },
+                            { en: 'like a boss', ru: 'как босс' }
+                        ],
+                        rules: [
+                            '📌 Фраза «like a boss» в конце — «как босс» (джокер)',
+                            '📌 Артикль «a» перед согласным звуком',
+                            '📌 Глагол «eat» → «eats» для 3-го лица ед.ч.'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'suddenly... a Dog eats a Big Pizza in the Garden like a boss',
+                    'Внезапно... собака ест большую пиццу в саду как босс',
+                    {
+                        structure: 'Наречие + Артикль + Существительное + Глагол + Артикль + Прилагательное + Существительное + Предлог + Артикль + Существительное + Фраза',
+                        breakdown: [
+                            { en: 'suddenly...', ru: 'Внезапно...' },
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Dog', ru: 'Собака' },
+                            { en: 'eats', ru: 'ест' },
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Big', ru: 'большую' },
+                            { en: 'Pizza', ru: 'пиццу' },
+                            { en: 'in', ru: 'в' },
+                            { en: 'the', ru: 'определённый артикль' },
+                            { en: 'Garden', ru: 'саду' },
+                            { en: 'like a boss', ru: 'как босс' }
+                        ],
+                        rules: [
+                            '📌 Джокер в начале и в конце предложения',
+                            '📌 Предлог «in» + предложный падеж: «в саду» (где?)',
+                            '📌 Фраза «like a boss» в конце — «как босс»',
+                            '📌 Артикль «the» перед «Garden» (определённый)'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'honestly a Teacher loves Crazy Students for real',
+                    'Честно говоря, учитель любит безумных студентов реально',
+                    {
+                        structure: 'Наречие + Артикль + Существительное + Глагол + Прилагательное + Существительное + Фраза',
+                        breakdown: [
+                            { en: 'honestly', ru: 'Честно говоря,' },
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Teacher', ru: 'Учитель' },
+                            { en: 'loves', ru: 'любит' },
+                            { en: 'Crazy', ru: 'безумных' },
+                            { en: 'Students', ru: 'студентов' },
+                            { en: 'for real', ru: 'реально' }
+                        ],
+                        rules: [
+                            '📌 Джокер «honestly» в начале (вводное слово)',
+                            '📌 Джокер «for real» в конце — «реально»',
+                            '📌 «Students» в винительном падеже: «студентов»',
+                            '📌 Артикль «a» перед «Teacher» (согласный звук)'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'technically Money kisses a Friend for no reason',
+                    'Технически, деньги целуют друга без причины',
+                    {
+                        structure: 'Наречие + Существительное + Глагол + Артикль + Существительное + Фраза',
+                        breakdown: [
+                            { en: 'technically', ru: 'Технически,' },
+                            { en: 'Money', ru: 'Деньги' },
+                            { en: 'kisses', ru: 'целуют' },
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Friend', ru: 'друга' },
+                            { en: 'for no reason', ru: 'без причины' }
+                        ],
+                        rules: [
+                            '📌 Джокер «technically» в начале (вводное слово)',
+                            '📌 Джокер «for no reason» в конце — «без причины»',
+                            '📌 «Friend» в винительном падеже: «друга» (одушевлённое)',
+                            '📌 «Money» — неисчисляемое, в английском всегда в единственном числе'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'imagine... the Door drinks Coffee in the Kitchen never again',
+                    'Представь... дверь пьёт кофе на кухне — никогда больше',
+                    {
+                        structure: 'Наречие + Артикль + Существительное + Глагол + Существительное + Предлог + Артикль + Существительное + Фраза',
+                        breakdown: [
+                            { en: 'imagine...', ru: 'Представь...' },
+                            { en: 'the', ru: 'определённый артикль' },
+                            { en: 'Door', ru: 'Дверь' },
+                            { en: 'drinks', ru: 'пьёт' },
+                            { en: 'Coffee', ru: 'кофе' },
+                            { en: 'in', ru: 'в' },
+                            { en: 'the', ru: 'определённый артикль' },
+                            { en: 'Kitchen', ru: 'кухне' },
+                            { en: 'never again', ru: 'никогда больше' }
+                        ],
+                        rules: [
+                            '📌 Джокер «imagine...» в начале (вводное слово)',
+                            '📌 Джокер «never again» в конце — «никогда больше»',
+                            '📌 Предлог «in» + предложный падеж: «на кухне» (где?)',
+                            '📌 Артикль «the» перед «Door» и «Kitchen» (определённые)'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'plot twist: a Bed eats Pizza on the Floor periodt',
+                    'Поворот сюжета: кровать ест пиццу на полу. Точка.',
+                    {
+                        structure: 'Фраза + Артикль + Существительное + Глагол + Существительное + Предлог + Артикль + Существительное + Фраза',
+                        breakdown: [
+                            { en: 'plot twist:', ru: 'Поворот сюжета:' },
+                            { en: 'a', ru: 'неопределённый артикль' },
+                            { en: 'Bed', ru: 'Кровать' },
+                            { en: 'eats', ru: 'ест' },
+                            { en: 'Pizza', ru: 'пиццу' },
+                            { en: 'on', ru: 'на' },
+                            { en: 'the', ru: 'определённый артикль' },
+                            { en: 'Floor', ru: 'полу' },
+                            { en: 'periodt', ru: 'Точка.' }
+                        ],
+                        rules: [
+                            '📌 Джокер «plot twist:» в начале (вводная фраза)',
+                            '📌 Джокер «periodt» в конце — «Точка.»',
+                            '📌 Предлог «on» + предложный падеж: «на полу» (где?)',
+                            '📌 Артикль «the» перед «Floor» (определённый)'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'surprisingly Rain loves Music from the Radio as heck',
+                    'Как ни странно, дождь любит музыку из радио офигенно',
+                    {
+                        structure: 'Наречие + Существительное + Глагол + Существительное + Предлог + Артикль + Существительное + Фраза',
+                        breakdown: [
+                            { en: 'surprisingly', ru: 'Как ни странно,' },
+                            { en: 'Rain', ru: 'Дождь' },
+                            { en: 'loves', ru: 'любит' },
+                            { en: 'Music', ru: 'музыку' },
+                            { en: 'from', ru: 'из' },
+                            { en: 'the', ru: 'определённый артикль' },
+                            { en: 'Radio', ru: 'радио' },
+                            { en: 'as heck', ru: 'офигенно' }
+                        ],
+                        rules: [
+                            '📌 Джокер «surprisingly» в начале (вводное слово)',
+                            '📌 Джокер «as heck» в конце — «офигенно»',
+                            '📌 Предлог «from» + родительный падеж: «из радио» (откуда?)',
+                            '📌 «Music» в винительном падеже: «музыку» (ж.р.)'
+                        ]
+                    }
+                ),
+                buildGrammar(
+                    'unfortunately the Head hates TV about Dogs or not',
+                    'К сожалению, голова ненавидит телевизор о собаках или нет',
+                    {
+                        structure: 'Наречие + Артикль + Существительное + Глагол + Существительное + Предлог + Существительное + Фраза',
+                        breakdown: [
+                            { en: 'unfortunately', ru: 'К сожалению,' },
+                            { en: 'the', ru: 'определённый артикль' },
+                            { en: 'Head', ru: 'Голова' },
+                            { en: 'hates', ru: 'ненавидит' },
+                            { en: 'TV', ru: 'телевизор' },
+                            { en: 'about', ru: 'о' },
+                            { en: 'Dogs', ru: 'собаках' },
+                            { en: 'or not', ru: 'или нет' }
+                        ],
+                        rules: [
+                            '📌 Джокер «unfortunately» в начале (вводное слово)',
+                            '📌 Джокер «or not» в конце — «или нет»',
+                            '📌 Предлог «about» + предложный падеж: «о собаках» (о ком? о чём?)',
+                            '📌 Артикль «the» перед «Head» (определённый)'
+                        ]
+                    }
+                ),
+            ]
+        };
+
+
+        // ================================================================
+        //  3. МЕМЫ И ЦВЕТА
+        // ================================================================
+
+        const MEMES = [
+            { text: 'I speak English like a boss!', ru: 'Я говорю по-английски как босс!',
+                img: 'https://cataas.com/cat?t=1' },
+            { text: 'My brain is full of cats.', ru: 'Мой мозг полон котов.', img: 'https://cataas.com/cat?t=2' },
+            { text: 'English? Easy peasy!', ru: 'Английский? Проще простого!', img: 'https://cataas.com/cat?t=3' },
+            { text: "I'm not lazy, I'm in energy-saving mode.", ru: 'Я не ленивый, я в режиме энергосбережения.',
+                img: 'https://cataas.com/cat?t=4' },
+            { text: 'My English level: chaotic good.', ru: 'Мой уровень английского: хаотично-добрый.',
+                img: 'https://cataas.com/cat?t=5' },
+            { text: 'I came, I saw, I forgot.', ru: 'Я пришёл, я увидел, я забыл.', img: 'https://cataas.com/cat?t=6' },
+            { text: "Let me check my dictionary... oh wait, it's in my head!",
+                ru: 'Дай-ка проверю словарь... ой, он у меня в голове!', img: 'https://cataas.com/cat?t=7' },
+            { text: "I don't make mistakes, I create new words.", ru: 'Я не делаю ошибок, я создаю новые слова.',
+                img: 'https://cataas.com/cat?t=8' },
+            { text: "My favorite tense is the one I don't know.", ru: 'Моё любимое время — то, которого я не знаю.',
+                img: 'https://cataas.com/cat?t=9' },
+            { text: "English is my second language... after sarcasm.",
+                ru: 'Английский — мой второй язык... после сарказма.', img: 'https://cataas.com/cat?t=10' },
+            { text: 'I put the "pro" in procrastination.', ru: 'Я добавляю "про" в прокрастинацию.',
+                img: 'https://cataas.com/cat?t=11' },
+            { text: 'My vocabulary is like a box of chocolates.',
+                ru: 'Мой словарный запас — как коробка шоколадных конфет.', img: 'https://cataas.com/cat?t=12' },
+            { text: "I'm not arguing, I'm just explaining why I'm right.",
+                ru: 'Я не спорю, я просто объясняю, почему я прав.', img: 'https://cataas.com/cat?t=13' },
+            { text: 'Error 404: English not found.', ru: 'Ошибка 404: Английский не найден.',
+                img: 'https://cataas.com/cat?t=14' },
+            { text: 'My English is powered by coffee and chaos.', ru: 'Мой английский работает на кофе и хаосе.',
+                img: 'https://cataas.com/cat?t=15' },
+        ];
+
+        const COLORS = [
+            '#ff7eb3', '#7af2a0', '#ffd76a', '#6ec8ff', '#c084fc',
+            '#fb923c', '#a78bfa', '#34d399', '#f472b6', '#60a5fa'
+        ];
+
+
+        // ================================================================
+        //  4. СОСТОЯНИЕ ПРИЛОЖЕНИЯ
+        // ================================================================
+
+        const state = {
+            correct: 0,
+            wrong: 0,
+            absurd: 0,
+            currentLevel: 'beginner',
+            currentPhrase: null,
+            options: [],
+            answered: false,
+            examMode: false,
+            examQuestions: [],
+            examIndex: 0,
+            examCorrect: 0,
+            examTotal: 10,
+            usedPhrases: { beginner: [], intermediate: [], advanced: [] },
+            dictionary: [],
+            flashcardMode: false,
+            flashcardIndex: 0,
+            flashcardShowing: false,
+        };
+
+
+        // ================================================================
+        //  5. ЗАГРУЗКА СЛОВАРЯ
+        // ================================================================
+
+        function loadDictionary() {
+            try {
+                const data = JSON.parse(localStorage.getItem('absurdEnglish_dict'));
+                if (data && Array.isArray(data)) {
+                    state.dictionary = data;
+                } else {
+                    state.dictionary = [
+                        { word: 'Dog', translation: 'Собака' },
+                        { word: 'Cat', translation: 'Кот' },
+                        { word: 'Pizza', translation: 'Пицца' },
+                    ];
+                    saveDictionary();
+                }
+            } catch (_) {
+                state.dictionary = [];
+            }
+            updateDictUI();
+        }
+
+        function saveDictionary() {
+            localStorage.setItem('absurdEnglish_dict', JSON.stringify(state.dictionary));
+            updateDictUI();
+        }
+
+        function updateDictUI() {
+            const list = document.getElementById('dictList');
+            const badge = document.getElementById('dictBadge');
+            const count = document.getElementById('dictCount');
+            
+            badge.textContent = state.dictionary.length;
+            count.textContent = state.dictionary.length;
+
+            if (state.dictionary.length === 0) {
+                list.innerHTML = '<li class="dict-empty">Словарь пуст. Добавьте слова</li>';
+                return;
+            }
+
+            list.innerHTML = state.dictionary.map((item, index) => `
+                <li>
+                    <span class="dict-word">${item.word}</span>
+                    <span class="dict-trans">${item.translation}</span>
+                    <button class="dict-remove" data-index="${index}">×</button>
+                </li>
+            `).join('');
+
+            list.querySelectorAll('.dict-remove').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const idx = parseInt(this.dataset.index);
+                    state.dictionary.splice(idx, 1);
+                    saveDictionary();
+                });
+            });
+        }
+
+
+        // ================================================================
+        //  6. ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
+        // ================================================================
+
+        function shuffle(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        function pick(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        function getColors() { return COLORS; }
+
+        function getWordTranslation(word) {
+            const clean = word.replace(/[.,:;!?…]/g, '').trim();
+            const lower = clean.toLowerCase();
+            
+            if (WORD_TRANSLATIONS[word]) return WORD_TRANSLATIONS[word];
+            if (WORD_TRANSLATIONS[lower]) return WORD_TRANSLATIONS[lower];
+            
+            const capitalized = lower.charAt(0).toUpperCase() + lower.slice(1);
+            if (WORD_TRANSLATIONS[capitalized]) return WORD_TRANSLATIONS[capitalized];
+            
+            for (const [key, value] of Object.entries(WORD_TRANSLATIONS)) {
+                if (key.includes(' ') && clean.includes(key)) return value;
+            }
+            
+            const dictItem = state.dictionary.find(item => 
+                item.word.toLowerCase() === lower || 
+                item.word.toLowerCase() === clean.toLowerCase()
+            );
+            if (dictItem) return dictItem.translation;
+            
+            return lower;
+        }
+
+        function getLevelLabel(level) {
+            const labels = {
+                beginner: '🟢 Начинающий',
+                intermediate: '🟡 Средний',
+                advanced: '🔴 Продвинутый'
+            };
+            return labels[level] || level;
+        }
+
+
+        // ================================================================
+        //  7. UI ФУНКЦИИ
+        // ================================================================
+
+        const phraseDisplay = document.getElementById('phraseDisplay');
+        const optionsContainer = document.getElementById('optionsContainer');
+        const feedback = document.getElementById('feedback');
+        const correctSpan = document.getElementById('correctCount');
+        const wrongSpan = document.getElementById('wrongCount');
+        const absurdSpan = document.getElementById('absurdCount');
+        const examBar = document.getElementById('examBar');
+        const examCurrent = document.getElementById('examCurrent');
+        const examTotal = document.getElementById('examTotal');
+        const examResult = document.getElementById('examResult');
+        const grammarSidebar = document.getElementById('grammarSidebar');
+        const grammarContent = document.getElementById('grammarContent');
+        const levelBadge = document.getElementById('levelBadge');
+
+        function renderPhrase(phrase) {
+            phraseDisplay.innerHTML = '';
+            const colors = getColors();
+            const words = phrase.en.split(' ');
+
+            words.forEach((word, idx) => {
+                const chip = document.createElement('span');
+                chip.className = 'word-chip';
+                chip.textContent = word;
+                const color = colors[idx % colors.length];
+                chip.style.color = color;
+                chip.style.textShadow = `0 0 20px ${color}44`;
+
+                const translation = getWordTranslation(word);
+                chip.setAttribute('data-tooltip', translation || word.toLowerCase());
+
+                phraseDisplay.appendChild(chip);
+            });
+
+            levelBadge.innerHTML = `
+                <span class="phrase-level-badge ${state.currentLevel}">${getLevelLabel(state.currentLevel)}</span>
+            `;
+        }
+
+        function renderOptions(opts, correct) {
+            optionsContainer.innerHTML = '';
+            const letters = ['A', 'B', 'C'];
+
+            opts.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerHTML = `<span class="opt-letter">${letters[idx]}</span> ${opt}`;
+                btn.dataset.value = opt;
+                btn.addEventListener('click', () => handleOptionClick(btn, opt, correct));
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function renderGrammar(phrase) {
+            if (!phrase || !phrase.details) {
+                grammarSidebar.classList.add('hidden');
+                return;
+            }
+
+            const d = phrase.details;
+            grammarSidebar.classList.remove('hidden');
+
+            let html = '';
+
+            // Структура предложения
+            html += `
+                <div class="grammar-section">
+                    <span class="section-title">📐 Структура</span>
+                    <div class="section-text">${d.structure}</div>
+                </div>
+            `;
+
+            // Разбор слов
+            if (d.breakdown && d.breakdown.length > 0) {
+                html += `
+                    <div class="grammar-section">
+                        <span class="section-title">🔤 Разбор слов</span>
+                        <div class="word-breakdown">
+                            ${d.breakdown.map(item => `
+                                <div class="wb-item">
+                                    <span class="wb-en">${item.en}</span>
+                                    <span class="wb-ru">${item.ru}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Правила
+            if (d.rules && d.rules.length > 0) {
+                html += `
+                    <div class="grammar-section">
+                        <span class="section-title">📖 Правила</span>
+                        <div class="section-text">
+                            ${d.rules.map(rule => `<div>${rule}</div>`).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            grammarContent.innerHTML = html;
+        }
+
+        function updateStats() {
+            correctSpan.textContent = state.correct;
+            wrongSpan.textContent = state.wrong;
+            absurdSpan.textContent = state.absurd;
+            localStorage.setItem('absurdEnglish_stats', JSON.stringify({
+                correct: state.correct,
+                wrong: state.wrong,
+                absurd: state.absurd
+            }));
+        }
+
+        function loadStats() {
+            try {
+                const data = JSON.parse(localStorage.getItem('absurdEnglish_stats'));
+                if (data) {
+                    state.correct = data.correct || 0;
+                    state.wrong = data.wrong || 0;
+                    state.absurd = data.absurd || 0;
+                    updateStats();
+                }
+            } catch (_) { /* ignore */ }
+        }
+
+
+        // ================================================================
+        //  8. ИГРОВАЯ ЛОГИКА
+        // ================================================================
+
+        function generateOptions(correctRu) {
+            const allPhrases = PHRASES_BY_LEVEL[state.currentLevel] || [];
+            const allTranslations = allPhrases.map(p => p.ru);
+            const wrongs = [];
+            const pool = shuffle([...allTranslations]);
+
+            for (const w of pool) {
+                if (w !== correctRu && !wrongs.includes(w)) {
+                    wrongs.push(w);
+                    if (wrongs.length === 2) break;
+                }
+            }
+
+            while (wrongs.length < 2) {
+                const fallback = pick(allTranslations);
+                if (fallback !== correctRu && !wrongs.includes(fallback)) {
+                    wrongs.push(fallback);
+                }
+            }
+
+            return shuffle([correctRu, ...wrongs]);
+        }
+
+        function showFeedback(isCorrect, correctAnswer) {
+            feedback.innerHTML = '';
+            const icon = isCorrect ? '✅' : '❌';
+            const msg = isCorrect ? 'Верно! 🎉' : `Неа! Правильно: <strong>${correctAnswer}</strong>`;
+            feedback.innerHTML = `<span>${icon} ${msg}</span>`;
+        }
+
+        function showMeme() {
+            const meme = pick(MEMES);
+            const div = document.createElement('div');
+            div.className = 'meme-text';
+            div.innerHTML = `
+                <div style="margin-top:4px;font-size:14px;opacity:0.8;">${meme.ru}</div>
+                <img class="meme-img" src="${meme.img}" alt="meme" loading="lazy" />
+            `;
+            feedback.appendChild(div);
+            setTimeout(() => {
+                const el = feedback.querySelector('.meme-text');
+                if (el) el.remove();
+            }, 8000);
+        }
+
+        function handleOptionClick(btn, selected, correct) {
+            if (state.answered) return;
+            state.answered = true;
+
+            const allBtns = document.querySelectorAll('.option-btn');
+            allBtns.forEach(b => b.disabled = true);
+
+            const isCorrect = selected === correct;
+
+            if (isCorrect) {
+                btn.classList.add('correct');
+                state.correct++;
+                showFeedback(true, correct);
+                if (!state.examMode) showMeme();
+            } else {
+                btn.classList.add('wrong');
+                state.wrong++;
+                allBtns.forEach(b => {
+                    if (b.dataset.value === correct) b.classList.add('correct');
+                });
+                showFeedback(false, correct);
+            }
+
+            updateStats();
+
+            if (state.examMode) {
+                if (isCorrect) state.examCorrect++;
+                setTimeout(() => nextExamQuestion(), 1500);
+            }
+        }
+
+        function getNextPhrase() {
+            const level = state.currentLevel;
+            const phrases = PHRASES_BY_LEVEL[level] || [];
+            
+            if (phrases.length === 0) return null;
+
+            if (state.usedPhrases[level].length >= phrases.length) {
+                state.usedPhrases[level] = [];
+            }
+
+            let available = phrases.filter((_, i) => !state.usedPhrases[level].includes(i));
+            if (available.length === 0) {
+                state.usedPhrases[level] = [];
+                available = phrases;
+            }
+
+            const idx = phrases.indexOf(pick(available));
+            state.usedPhrases[level].push(idx);
+            return phrases[idx];
+        }
+
+        function newPhrase() {
+            if (state.examMode) return;
+
+            state.answered = false;
+            feedback.innerHTML = '';
+
+            const phrase = getNextPhrase();
+            if (!phrase) {
+                feedback.innerHTML = '❌ Нет фраз для этого уровня';
+                return;
+            }
+
+            state.currentPhrase = phrase;
+
+            renderPhrase(phrase);
+            renderGrammar(phrase);
+
+            const opts = generateOptions(phrase.ru);
+            state.options = opts;
+            renderOptions(opts, phrase.ru);
+
+            examBar.classList.add('hidden');
+            examResult.textContent = '';
+            document.getElementById('examBtn').textContent = '📝 Экзамен';
+        }
+
+        function changeLevel(level) {
+            if (state.examMode) return;
+            
+            state.currentLevel = level;
+            state.usedPhrases[level] = [];
+            
+            document.querySelectorAll('.level-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.level === level);
+            });
+            
+            localStorage.setItem('absurdEnglish_level', level);
+            newPhrase();
+        }
+
+
+        // ================================================================
+        //  9. ЭКЗАМЕН
+        // ================================================================
+
+        function startExam() {
+            if (state.examMode) {
+                state.examMode = false;
+                examBar.classList.add('hidden');
+                document.getElementById('examBtn').textContent = '📝 Экзамен';
+                newPhrase();
+                return;
+            }
+
+            const phrases = PHRASES_BY_LEVEL[state.currentLevel] || [];
+            if (phrases.length < 10) {
+                feedback.innerHTML = `❌ Недостаточно фраз для экзамена (нужно 10, есть ${phrases.length})`;
+                setTimeout(() => { if (!state.examMode) feedback.innerHTML = ''; }, 2000);
+                return;
+            }
+
+            state.examMode = true;
+            state.examIndex = 0;
+            state.examCorrect = 0;
+            state.examTotal = 10;
+            examTotal.textContent = state.examTotal;
+            examBar.classList.remove('hidden');
+            document.getElementById('examBtn').textContent = '🚫 Выйти';
+
+            const shuffled = shuffle([...phrases]);
+            state.examQuestions = shuffled.slice(0, state.examTotal);
+            showExamQuestion();
+        }
+
+        function showExamQuestion() {
+            if (state.examIndex >= state.examTotal) {
+                finishExam();
+                return;
+            }
+
+            state.answered = false;
+            feedback.innerHTML = '';
+
+            const phrase = state.examQuestions[state.examIndex];
+            state.currentPhrase = phrase;
+
+            examCurrent.textContent = state.examIndex + 1;
+            examResult.textContent = '';
+
+            renderPhrase(phrase);
+            renderGrammar(phrase);
+
+            const opts = generateOptions(phrase.ru);
+            state.options = opts;
+            renderOptions(opts, phrase.ru);
+        }
+
+        function nextExamQuestion() {
+            state.examIndex++;
+            showExamQuestion();
+        }
+
+        function finishExam() {
+            state.examMode = false;
+            examBar.classList.remove('hidden');
+
+            const pct = Math.round((state.examCorrect / state.examTotal) * 100);
+            const emoji = pct === 100 ? '🎉' : pct >= 70 ? '👍' : '💪';
+
+            examResult.innerHTML = `
+                <span>${emoji} Результат: <span class="score">${state.examCorrect} / ${state.examTotal}</span> (${pct}%)</span>
+            `;
+
+            document.getElementById('examBtn').textContent = '📝 Экзамен';
+            document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
+
+            if (pct === 100) {
+                feedback.innerHTML = '🎉 Идеально! Ты гений!';
+                showMeme();
+            } else if (pct >= 70) {
+                feedback.innerHTML = '👍 Отлично! Почти идеально!';
+            } else {
+                feedback.innerHTML = '💪 Хорошая попытка! Попробуй ещё!';
+            }
+        }
+
+
+        // ================================================================
+        //  10. ОЗВУЧКА
+        // ================================================================
+
+        function speakPhrase() {
+            if (!state.currentPhrase) return;
+            const words = state.currentPhrase.en;
+            if (!words) return;
+
+            if ('speechSynthesis' in window) {
+                const utter = new SpeechSynthesisUtterance(words);
+                utter.lang = 'en-US';
+                utter.rate = 0.85;
+                window.speechSynthesis.cancel();
+                window.speechSynthesis.speak(utter);
+            } else {
+                alert('Озвучка не поддерживается в этом браузере');
+            }
+        }
+
+
+        // ================================================================
+        //  11. ДОБАВЛЕНИЕ В СЛОВАРЬ
+        // ================================================================
+
+        function addToDictionary() {
+            if (!state.currentPhrase) return;
+            
+            const words = state.currentPhrase.en.split(' ');
+            let added = 0;
+
+            words.forEach(word => {
+                const clean = word.replace(/[.,:;!?…]/g, '').trim();
+                const lower = clean.toLowerCase();
+                
+                if (['a', 'an', 'the'].includes(lower)) return;
+                if (['in', 'on', 'at', 'with', 'without', 'for', 'from', 'to', 'about', 'of'].includes(lower)) return;
+
+                const translation = getWordTranslation(clean);
+                if (translation && translation !== lower && translation !== '') {
+                    const exists = state.dictionary.some(item => 
+                        item.word.toLowerCase() === lower || 
+                        item.translation.toLowerCase() === translation.toLowerCase()
+                    );
+                    
+                    if (!exists) {
+                        state.dictionary.push({ word: clean, translation: translation });
+                        added++;
+                    }
+                }
+            });
+
+            if (added > 0) {
+                saveDictionary();
+                feedback.innerHTML = `📚 Добавлено ${added} слов в словарь!`;
+                setTimeout(() => { if (!state.examMode) feedback.innerHTML = ''; }, 2000);
+            } else {
+                feedback.innerHTML = '📚 Слова уже есть в словаре';
+                setTimeout(() => { if (!state.examMode) feedback.innerHTML = ''; }, 1500);
+            }
+        }
+
+
+        // ================================================================
+        //  12. ФЛЕШ-КАРТОЧКИ
+        // ================================================================
+
+        const flashcardOverlay = document.getElementById('flashcardOverlay');
+        const flashcardWord = document.getElementById('flashcardWord');
+        const flashcardTrans = document.getElementById('flashcardTrans');
+        const flashcardProgress = document.getElementById('flashcardProgress');
+        const flashcardShow = document.getElementById('flashcardShow');
+        const flashcardNext = document.getElementById('flashcardNext');
+        const flashcardClose = document.getElementById('flashcardClose');
+
+        function startFlashcards() {
+            if (state.dictionary.length === 0) {
+                feedback.innerHTML = '📚 Словарь пуст! Добавьте слова.';
+                setTimeout(() => { feedback.innerHTML = ''; }, 2000);
+                return;
+            }
+
+            state.flashcardMode = true;
+            state.flashcardIndex = 0;
+            state.flashcardShowing = false;
+            
+            flashcardOverlay.classList.add('active');
+            document.getElementById('dictLearnBtn').textContent = '❌ Закрыть';
+            document.getElementById('dictLearnBtn').classList.add('active');
+            
+            showFlashcard();
+        }
+
+        function showFlashcard() {
+            const dict = state.dictionary;
+            if (dict.length === 0 || state.flashcardIndex >= dict.length) {
+                closeFlashcards();
+                return;
+            }
+
+            const item = dict[state.flashcardIndex];
+            flashcardWord.textContent = item.word;
+            flashcardTrans.textContent = item.translation;
+            flashcardTrans.classList.remove('show');
+            flashcardProgress.textContent = `${state.flashcardIndex + 1} / ${dict.length}`;
+            state.flashcardShowing = false;
+            flashcardShow.textContent = 'Показать перевод';
+        }
+
+        function toggleFlashcardTranslation() {
+            if (!state.flashcardShowing) {
+                flashcardTrans.classList.add('show');
+                state.flashcardShowing = true;
+                flashcardShow.textContent = 'Скрыть перевод';
+            } else {
+                flashcardTrans.classList.remove('show');
+                state.flashcardShowing = false;
+                flashcardShow.textContent = 'Показать перевод';
+            }
+        }
+
+        function nextFlashcard() {
+            state.flashcardIndex++;
+            if (state.flashcardIndex >= state.dictionary.length) {
+                shuffle(state.dictionary);
+                state.flashcardIndex = 0;
+                feedback.innerHTML = '🔄 Слова перемешаны! Начинаем заново.';
+                setTimeout(() => { feedback.innerHTML = ''; }, 1500);
+            }
+            showFlashcard();
+        }
+
+        function closeFlashcards() {
+            flashcardOverlay.classList.remove('active');
+            state.flashcardMode = false;
+            document.getElementById('dictLearnBtn').textContent = '🎯 Повторить слова';
+            document.getElementById('dictLearnBtn').classList.remove('active');
+        }
+
+        flashcardShow.addEventListener('click', toggleFlashcardTranslation);
+        flashcardNext.addEventListener('click', nextFlashcard);
+        flashcardClose.addEventListener('click', closeFlashcards);
+        
+        flashcardOverlay.addEventListener('click', function(e) {
+            if (e.target === this) closeFlashcards();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!state.flashcardMode) return;
+            if (e.key === ' ' || e.key === 'Enter') {
+                e.preventDefault();
+                if (!state.flashcardShowing) {
+                    toggleFlashcardTranslation();
+                } else {
+                    nextFlashcard();
+                }
+            }
+            if (e.key === 'Escape') closeFlashcards();
+        });
+
+
+        // ================================================================
+        //  13. СБРОС
+        // ================================================================
+
+        function resetStats() {
+            if (state.examMode) return;
+
+            if (confirm('Сбросить всю статистику?')) {
+                state.correct = 0;
+                state.wrong = 0;
+                state.absurd = 0;
+                state.usedPhrases = { beginner: [], intermediate: [], advanced: [] };
+                updateStats();
+                localStorage.setItem('absurdEnglish_stats', JSON.stringify({
+                    correct: 0,
+                    wrong: 0,
+                    absurd: 0
+                }));
+                feedback.innerHTML = '🔄 Статистика сброшена';
+                setTimeout(() => { feedback.innerHTML = ''; }, 1500);
+                newPhrase();
+            }
+        }
+
+
+        // ================================================================
+        //  14. ИНИЦИАЛИЗАЦИЯ
+        // ================================================================
+
+        document.querySelectorAll('.level-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                changeLevel(this.dataset.level);
+            });
+        });
+
+        function loadLevel() {
+            const saved = localStorage.getItem('absurdEnglish_level');
+            if (saved && PHRASES_BY_LEVEL[saved]) {
+                state.currentLevel = saved;
+            }
+            document.querySelectorAll('.level-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.level === state.currentLevel);
+            });
+        }
+
+        document.getElementById('newBtn').addEventListener('click', newPhrase);
+        document.getElementById('speakBtn').addEventListener('click', speakPhrase);
+        document.getElementById('examBtn').addEventListener('click', startExam);
+        document.getElementById('resetBtn').addEventListener('click', resetStats);
+        document.getElementById('addToDictBtn').addEventListener('click', addToDictionary);
+        document.getElementById('dictLearnBtn').addEventListener('click', startFlashcards);
+
+        document.getElementById('dictAddBtn').addEventListener('click', function() {
+            const wordInput = document.getElementById('dictWordInput');
+            const transInput = document.getElementById('dictTransInput');
+            const word = wordInput.value.trim();
+            const trans = transInput.value.trim();
+
+            if (word && trans) {
+                const exists = state.dictionary.some(item => 
+                    item.word.toLowerCase() === word.toLowerCase()
+                );
+                if (!exists) {
+                    state.dictionary.push({ word, translation: trans });
+                    saveDictionary();
+                    wordInput.value = '';
+                    transInput.value = '';
+                    feedback.innerHTML = `✅ Добавлено: ${word} — ${trans}`;
+                    setTimeout(() => { feedback.innerHTML = ''; }, 1500);
+                } else {
+                    feedback.innerHTML = '⚠️ Это слово уже есть в словаре';
+                    setTimeout(() => { feedback.innerHTML = ''; }, 1500);
+                }
+            }
+        });
+
+        document.getElementById('dictWordInput').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') document.getElementById('dictTransInput').focus();
+        });
+        document.getElementById('dictTransInput').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') document.getElementById('dictAddBtn').click();
+        });
+
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            this.style.transform = 'scale(0.9)';
+            setTimeout(() => { this.style.transform = ''; }, 200);
+        });
+
+        loadStats();
+        loadDictionary();
+        loadLevel();
+        newPhrase();
+
+        console.log('🤪 Абсурдный Английский загружен!');
+        console.log(`📚 Уровни: Beginner (${PHRASES_BY_LEVEL.beginner.length}), Intermediate (${PHRASES_BY_LEVEL.intermediate.length}), Advanced (${PHRASES_BY_LEVEL.advanced.length})`);
+        console.log(`📖 Словарь переводов: ${Object.keys(WORD_TRANSLATIONS).length} слов`);
+        console.log(`📚 В пользовательском словаре: ${state.dictionary.length} слов`);
+        console.log('📖 Грамматика теперь содержит структуру, разбор слов и правила!');
+    </script>
+</body>
+</html>
